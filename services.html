@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Our Curated Services - Bella Bloom Beauty Studio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#894c59",
+                        "primary-container": "#d48c9a",
+                        "primary-fixed": "#ffd9df",
+                        "primary-fixed-dim": "#ffb1c0",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#5a2633",
+                        "secondary": "#695c54",
+                        "secondary-container": "#f2dfd5",
+                        "secondary-fixed": "#f2dfd5",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#625d5b",
+                        "tertiary-fixed": "#e9e1de",
+                        "background": "#faf9f6",
+                        "surface": "#faf9f6",
+                        "surface-bright": "#faf9f6",
+                        "surface-dim": "#dbdad7",
+                        "surface-container-low": "#f4f3f1",
+                        "surface-container": "#efeeeb",
+                        "surface-container-high": "#e9e8e5",
+                        "surface-container-highest": "#e3e2e0",
+                        "on-surface": "#1a1c1a",
+                        "on-surface-variant": "#524345",
+                        "outline": "#847375",
+                        "outline-variant": "#d6c2c4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "margin-mobile": "20px",
+                        "unit": "8px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "label-lg": ["Plus Jakarta Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
+
+<!-- Top Navigation -->
+<nav class="sticky top-0 w-full z-50 bg-surface/80 dark:bg-background/80 backdrop-blur-md border-b border-surface-container-low/30" id="navbar">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto h-20 md:h-24">
+<a class="flex items-center gap-3.5 group hover:opacity-95 transition-all duration-300" href="index.html">
+  <div class="w-11 h-11 md:w-12 md:h-12 rounded-2xl bg-gradient-to-br from-primary-container/50 via-primary/10 to-secondary-container/70 border border-primary/25 flex items-center justify-center text-primary shadow-sm group-hover:scale-105 group-hover:shadow-md transition-all duration-300">
+    <svg class="w-6 h-6 md:w-7 md:h-7 text-primary fill-current" viewBox="0 0 24 24">
+      <path d="M12 2C11.5 4 10 7.5 7 9C4 10.5 2 12 2 14C2 17.3 4.7 20 8 20C10.5 20 11.5 18.5 12 17C12.5 18.5 13.5 20 16 20C19.3 20 22 17.3 22 14C22 12 20 10.5 17 9C14 7.5 12.5 4 12 2ZM12 6.5C12.8 8.8 14.5 10.8 17.2 11.8C18.8 12.4 19.8 13.3 19.8 14.5C19.8 16.3 18.1 17.8 16 17.8C14.2 17.8 13.2 16.5 12.8 14.8C12.7 14.4 12.3 14.1 11.9 14.1C11.5 14.1 11.1 14.4 11 14.8C10.6 16.5 9.6 17.8 7.8 17.8C5.7 17.8 4 16.3 4 14.5C4 13.3 5 12.4 6.6 11.8C9.3 10.8 11 8.8 11.8 6.5C11.9 6.2 12.1 6.2 12 6.5Z"/>
+    </svg>
+  </div>
+  <div class="flex flex-col">
+    <span class="font-display font-bold text-2xl md:text-3xl tracking-tight text-primary leading-none group-hover:text-on-primary-container transition-colors">
+      Bella <span class="font-normal italic text-on-surface">Bloom</span>
+    </span>
+    <span class="text-[9px] md:text-[10px] tracking-[0.25em] uppercase font-bold text-secondary mt-1">
+      Beauty Studio • Austin
+    </span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-8 font-label-lg text-label-lg">
+<a class="text-secondary hover:text-primary transition-colors duration-300" href="index.html">Home</a>
+<a class="text-primary border-b-2 border-primary font-bold pb-1 hover:opacity-80 transition-all" href="services.html">Services</a>
+<a class="text-secondary hover:text-primary transition-colors duration-300" href="transformations.html">Results</a>
+<a class="text-secondary hover:text-primary transition-colors duration-300" href="artists.html">Team</a>
+<a class="text-secondary hover:text-primary transition-colors duration-300" href="contact.html">Contact</a>
+</div>
+<div class="flex items-center gap-4">
+<a href="tel:5125550184" class="hidden lg:flex items-center gap-1.5 text-xs font-semibold text-secondary hover:text-primary transition-colors">
+  <span class="material-symbols-outlined text-sm text-primary">call</span>
+  <span>(512) 555-0184</span>
+</a>
+<a href="booking.html" class="hidden md:inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-primary to-primary-container text-on-primary font-label-lg text-label-lg rounded-full hover:shadow-md hover:scale-105 active:scale-95 transition-all duration-300 shadow-sm border border-primary/20">
+    <span>Book Now</span>
+    <span class="material-symbols-outlined text-sm ml-1.5">arrow_forward</span>
+</a>
+<button id="mobileServicesBtn" class="md:hidden text-primary p-2">
+  <span class="material-symbols-outlined text-2xl">menu</span>
+</button>
+</div>
+</div>
+
+<!-- Mobile Dropdown -->
+<div id="mobileServicesMenu" class="hidden md:hidden px-6 py-4 bg-surface border-t border-surface-container-high/40 flex flex-col gap-3 font-label-lg">
+  <a class="text-secondary hover:text-primary py-1" href="index.html">Home</a>
+  <a class="text-primary font-bold py-1" href="services.html">Services</a>
+  <a class="text-secondary hover:text-primary py-1" href="transformations.html">Results</a>
+  <a class="text-secondary hover:text-primary py-1" href="artists.html">Team</a>
+  <a class="text-secondary hover:text-primary py-1" href="contact.html">Contact</a>
+  <a href="booking.html" class="mt-2 inline-flex justify-center items-center gap-2 bg-primary text-on-primary rounded-full py-3">
+    Book Now
+  </a>
+</div>
+</nav>
+
+<main>
+<!-- Hero Header -->
+<section class="py-20 px-margin-mobile md:px-margin-desktop bg-surface-container-low border-b border-surface-container text-center">
+<div class="max-w-3xl mx-auto">
+<span class="inline-block py-1.5 px-4 rounded-full bg-secondary-container text-on-secondary-container font-label-md uppercase tracking-wider mb-4">
+    Comprehensive Treatment Menu
+</span>
+<h1 class="font-display-lg text-display-lg text-primary mb-6">Our Curated Services</h1>
+<p class="font-body-lg text-on-surface-variant max-w-xl mx-auto">
+    Every service is performed by our certified beauty artists using medical-grade formulations, bespoke protocols, and state-of-the-art technology.
+</p>
+
+<!-- Category Filter Tabs -->
+<div class="flex flex-wrap justify-center gap-2.5 mt-10" id="serviceTabs">
+  <button onclick="filterServiceTab('all', this)" class="px-6 py-2.5 rounded-full text-xs font-semibold bg-primary text-on-primary shadow-sm">All Services</button>
+  <button onclick="filterServiceTab('skincare', this)" class="px-6 py-2.5 rounded-full text-xs font-semibold bg-surface border border-surface-container hover:border-primary text-secondary">Skincare &amp; Facials</button>
+  <button onclick="filterServiceTab('hair', this)" class="px-6 py-2.5 rounded-full text-xs font-semibold bg-surface border border-surface-container hover:border-primary text-secondary">Hair Artistry</button>
+  <button onclick="filterServiceTab('nails', this)" class="px-6 py-2.5 rounded-full text-xs font-semibold bg-surface border border-surface-container hover:border-primary text-secondary">Nail Spa</button>
+  <button onclick="filterServiceTab('makeup', this)" class="px-6 py-2.5 rounded-full text-xs font-semibold bg-surface border border-surface-container hover:border-primary text-secondary">Makeup &amp; Bridal</button>
+</div>
+</div>
+</section>
+
+<!-- Full Services Presentation Section -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-24">
+<div class="space-y-16" id="servicesCategoryList">
+
+  <!-- 1. SKINCARE SECTION -->
+  <div class="service-cat skincare bg-surface-container-low rounded-3xl p-8 md:p-12 border border-surface-container" id="skincare">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4 border-b border-surface-container-highest pb-6">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center">
+          <span class="material-symbols-outlined">face</span>
+        </div>
+        <div>
+          <h2 class="font-headline-lg text-3xl font-bold text-on-surface">Skincare &amp; Facials</h2>
+          <p class="text-xs text-on-surface-variant">Deep cellular nourishment, ultrasonic cleansing, and barrier restoration.</p>
+        </div>
+      </div>
+      <a href="booking.html?service=skincare" class="px-6 py-2.5 rounded-full bg-primary text-on-primary text-xs font-bold shadow-sm hover:bg-on-primary-container transition-colors">Book Facial Treatment</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Item 1 -->
+      <div class="bg-surface p-6 rounded-2xl border border-surface-container flex justify-between items-start">
+        <div>
+          <h4 class="font-bold text-base text-on-surface mb-1">Signature HydraFacial</h4>
+          <p class="text-xs text-on-surface-variant mb-2">Deep cleanse, ultrasonic vortex extraction, and hyaluronic acid glow infusion.</p>
+          <span class="text-[11px] bg-secondary-container px-2.5 py-0.5 rounded-full font-medium">⏱ 60 Min</span>
+        </div>
+        <div class="text-right pl-4">
+          <span class="font-headline-md text-xl text-primary font-bold block">$199</span>
+          <a href="booking.html?service=HydraFacial" class="text-xs text-primary font-bold hover:underline mt-2 inline-block">Book →</a>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="bg-surface p-6 rounded-2xl border border-surface-container flex justify-between items-start">
+        <div>
+          <h4 class="font-bold text-base text-on-surface mb-1">Bella Bloom Signature Facial</h4>
+          <p class="text-xs text-on-surface-variant mb-2">Micro-current lifting, botanical peel, LED phototherapy, and stem-cell finishing.</p>
+          <span class="text-[11px] bg-secondary-container px-2.5 py-0.5 rounded-full font-medium">⏱ 90 Min</span>
+        </div>
+        <div class="text-right pl-4">
+          <span class="font-headline-md text-xl text-primary font-bold block">$265</span>
+          <a href="booking.html?service=Signature" class="text-xs text-primary font-bold hover:underline mt-2 inline-block">Book →</a>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="bg-surface p-6 rounded-2xl border border-surface-container flex justify-between items-start">
+        <div>
+          <h4 class="font-bold text-base text-on-surface mb-1">Luminous Chemical Peel</h4>
+          <p class="text-xs text-on-surface-variant mb-2">Resurface and rejuvenate dull skin, hyperpigmentation, and texture.</p>
+          <span class="text-[11px] bg-secondary-container px-2.5 py-0.5 rounded-full font-medium">⏱ 45 Min</span>
+        </div>
+        <div class="text-right pl-4">
+          <span class="font-headline-md text-xl text-primary font-bold block">$150</span>
+          <a href="booking.html?service=Chemical+Peel" class="text-xs text-primary font-bold hover:underline mt-2 inline-block">Book →</a>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="bg-surface p-6 rounded-2xl border border-surface-container flex justify-between items-start">
+        <div>
+          <h4 class="font-bold text-base text-on-surface mb-1">Precision Dermaplaning Glow</h4>
+          <p class="text-xs text-on-surface-variant mb-2">Gentle physical exfoliation removing peach fuzz and dead surface cells for glass skin.</p>
+          <span class="text-[11px] bg-secondary-container px-2.5 py-0.5 rounded-full font-medium">⏱ 45 Min</span>
+        </div>
+        <div class="text-right pl-4">
+          <span class="font-headline-md text-xl text-primary font-bold block">$75</span>
+          <a href="booking.html?service=Dermaplaning" class="text-xs text-primary font-bold hover:underline mt-2 inline-block">Book →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. HAIR SECTION -->
+  <div class="service-cat hair bg-surface-container-low rounded-3xl p-8 md:p-12 border border-surface-container" id="hair">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4 border-b border-surface-container-highest pb-6">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center">
+          <span class="material-symbols-outlined">content_cut</span>
+        </div>
+        <div>
+          <h2 class="font-headline-lg text-3xl font-bold text-on-surface">Hair Artistry</h2>
+          <p class="text-xs text-on-surface-variant">Precision haircuts, dimensional balayage, toner glazing, and luxury blowouts.</p>
+        </div>
+      </div>
+      <a href="booking.html?service=hair" class="px-6 py-2.5 rounded-full bg-primary text-on-primary text-xs font-bold shadow-sm hover:bg-on-primary-container transition-colors">Book Hair Service</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Item 1 -->
+      <div class="bg-surface p-6 rounded-2xl border border-surface-container flex justify-between items-start">
+        <div>
+          <h4 class="font-bold text-base text-on-surface mb-1">Full Balayage &amp; Dimension</h4>
+          <p class="text-xs text-on-surface-variant mb-2">Custom hand-painted highlights, gloss toner, and restorative olaplex bond treatment.</p>
+          <span class="text-[11px] bg-secondary-container px-2.5 py-0.5 rounded-full font-medium">⏱ 180 Min</span>
+        </div>
+        <div class="text-right pl-4">
+          <span class="font-headline-md text-xl text-primary font-bold block">$250</span>
+          <a href="booking.html?service=Balayage" class="text-xs text-primary font-bold hover:underline mt-2 inline-block">Book →</a>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="bg-surface p-6 rounded-2xl border border-surface-container flex justify-between items-start">
+        <div>
+          <h4 class="font-bold text-base text-on-surface mb-1">Women's Precision Haircut</h4>
+          <p class="text-xs text-on-surface-variant mb-2">Sculptural haircut tailored to face shape, includes shampoo massage and blowout.</p>
+          <span class="text-[11px] bg-secondary-container px-2.5 py-0.5 rounded-full font-medium">⏱ 60 Min</span>
+        </div>
+        <div class="text-right pl-4">
+          <span class="font-headline-md text-xl text-primary font-bold block">$55</span>
+          <a href="booking.html?service=Haircut" class="text-xs text-primary font-bold hover:underline mt-2 inline-block">Book →</a>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="bg-surface p-6 rounded-2xl border border-surface-container flex justify-between items-start">
+        <div>
+          <h4 class="font-bold text-base text-on-surface mb-1">Luxury Signature Blowout</h4>
+          <p class="text-xs text-on-surface-variant mb-2">Deep scalp detox, botanical conditioning wash, and voluminous bouncy blowout.</p>
+          <span class="text-[11px] bg-secondary-container px-2.5 py-0.5 rounded-full font-medium">⏱ 45 Min</span>
+        </div>
+        <div class="text-right pl-4">
+          <span class="font-headline-md text-xl text-primary font-bold block">$45</span>
+          <a href="booking.html?service=Blowout" class="text-xs text-primary font-bold hover:underline mt-2 inline-block">Book →</a>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="bg-surface p-6 rounded-2xl border border-surface-container flex justify-between items-start">
+        <div>
+          <h4 class="font-bold text-base text-on-surface mb-1">Men's Executive Haircut</h4>
+          <p class="text-xs text-on-surface-variant mb-2">Modern fade or classic scissor cut with hot towel rinse and neck detailing.</p>
+          <span class="text-[11px] bg-secondary-container px-2.5 py-0.5 rounded-full font-medium">⏱ 35 Min</span>
+        </div>
+        <div class="text-right pl-4">
+          <span class="font-headline-md text-xl text-primary font-bold block">$35</span>
+          <a href="booking.html?service=Mens+Haircut" class="text-xs text-primary font-bold hover:underline mt-2 inline-block">Book →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. NAILS SECTION -->
+  <div class="service-cat nails bg-surface-container-low rounded-3xl p-8 md:p-12 border border-surface-container" id="nails">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4 border-b border-surface-container-highest pb-6">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center">
+          <span class="material-symbols-outlined">spa</span>
+        </div>
+        <div>
+          <h2 class="font-headline-lg text-3xl font-bold text-on-surface">Nail Rituals &amp; Spa</h2>
+          <p class="text-xs text-on-surface-variant">Non-toxic gel manicures, luxury spa pedicures, and artistic nail extensions.</p>
+        </div>
+      </div>
+      <a href="booking.html?service=nails" class="px-6 py-2.5 rounded-full bg-primary text-on-primary text-xs font-bold shadow-sm hover:bg-on-primary-container transition-colors">Book Nail Ritual</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Item 1 -->
+      <div class="bg-surface p-6 rounded-2xl border border-surface-container flex justify-between items-start">
+        <div>
+          <h4 class="font-bold text-base text-on-surface mb-1">Bella Gel Manicure</h4>
+          <p class="text-xs text-on-surface-variant mb-2">Cuticle care, nail shaping, long-lasting LED gel polish, and hand massage.</p>
+          <span class="text-[11px] bg-secondary-container px-2.5 py-0.5 rounded-full font-medium">⏱ 50 Min</span>
+        </div>
+        <div class="text-right pl-4">
+          <span class="font-headline-md text-xl text-primary font-bold block">$50</span>
+          <a href="booking.html?service=Gel+Manicure" class="text-xs text-primary font-bold hover:underline mt-2 inline-block">Book →</a>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="bg-surface p-6 rounded-2xl border border-surface-container flex justify-between items-start">
+        <div>
+          <h4 class="font-bold text-base text-on-surface mb-1">Luxury Organic Pedicure</h4>
+          <p class="text-xs text-on-surface-variant mb-2">Epsom salt soak, botanical scrub, callus smoothing, and hot stone massage.</p>
+          <span class="text-[11px] bg-secondary-container px-2.5 py-0.5 rounded-full font-medium">⏱ 60 Min</span>
+        </div>
+        <div class="text-right pl-4">
+          <span class="font-headline-md text-xl text-primary font-bold block">$55</span>
+          <a href="booking.html?service=Pedicure" class="text-xs text-primary font-bold hover:underline mt-2 inline-block">Book →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. MAKEUP & BRIDAL -->
+  <div class="service-cat makeup bg-surface-container-low rounded-3xl p-8 md:p-12 border border-surface-container" id="makeup">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4 border-b border-surface-container-highest pb-6">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center">
+          <span class="material-symbols-outlined">brush</span>
+        </div>
+        <div>
+          <h2 class="font-headline-lg text-3xl font-bold text-on-surface">Makeup &amp; Bridal Packages</h2>
+          <p class="text-xs text-on-surface-variant">Editorial glam, red carpet makeup, and full bridal party sanctuary packages.</p>
+        </div>
+      </div>
+      <a href="booking.html?service=bridal" class="px-6 py-2.5 rounded-full bg-primary text-on-primary text-xs font-bold shadow-sm hover:bg-on-primary-container transition-colors">Inquire Bridal</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Item 1 -->
+      <div class="bg-surface p-6 rounded-2xl border border-surface-container flex justify-between items-start">
+        <div>
+          <h4 class="font-bold text-base text-on-surface mb-1">Full Bridal Transformation Package</h4>
+          <p class="text-xs text-on-surface-variant mb-2">Bridal trial, wedding day hair styling, airbrush makeup, and pre-event facial.</p>
+          <span class="text-[11px] bg-secondary-container px-2.5 py-0.5 rounded-full font-medium">Full Day Ritual</span>
+        </div>
+        <div class="text-right pl-4">
+          <span class="font-headline-md text-xl text-primary font-bold block">$250+</span>
+          <a href="booking.html?service=Bridal+Package" class="text-xs text-primary font-bold hover:underline mt-2 inline-block">Book →</a>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="bg-surface p-6 rounded-2xl border border-surface-container flex justify-between items-start">
+        <div>
+          <h4 class="font-bold text-base text-on-surface mb-1">Special Event Soft Glam</h4>
+          <p class="text-xs text-on-surface-variant mb-2">Flawless long-wear skin finish, customized eye look, and individual lash application.</p>
+          <span class="text-[11px] bg-secondary-container px-2.5 py-0.5 rounded-full font-medium">⏱ 60 Min</span>
+        </div>
+        <div class="text-right pl-4">
+          <span class="font-headline-md text-xl text-primary font-bold block">$85</span>
+          <a href="booking.html?service=Soft+Glam" class="text-xs text-primary font-bold hover:underline mt-2 inline-block">Book →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- Call to Action Banner -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="bg-primary text-on-primary rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
+<h2 class="font-headline-lg-mobile md:font-headline-lg mb-6">Ready to Reserve Your Treatment?</h2>
+<p class="font-body-lg max-w-xl mx-auto mb-10 opacity-90">Experience serene sophistication at Austin's premier beauty sanctuary.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<a href="booking.html" class="bg-surface text-primary hover:bg-surface-bright rounded-full px-8 py-4 font-label-lg transition-transform active:scale-95 shadow-md">Book Online Now</a>
+<a href="contact.html" class="border border-on-primary/30 hover:bg-on-primary/10 rounded-full px-8 py-4 font-label-lg transition-colors">Contact Sanctuary</a>
+</div>
+</div>
+</section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-surface-container py-16 border-t border-surface-container-high/60">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-10">
+<div>
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDWkuNuVWEzjU_m1F-t8ZoubJIDSY6bu007zWveGrn963-7JhfgTe8qHooksfshquROQdOslQjsOe3SNlNwavb736f33F2oluquYFVLS7Tm5ADGypUd-2gaZLZoElZ_gJyWC21zS8snKG_9WL4Wu6tCpKWQJSo6afYqk8CsLPpzFUEjBJFXWcm5qeYRhoryp_ZF91IOCR4BlPR8zMScEvmFIBuvdXfeZikIHYoKB36MNOAw7B0DQMnRAl5ElhJkSKCkw" alt="Bella Bloom" class="h-10 w-auto mb-4">
+<p class="text-xs text-on-surface-variant leading-relaxed mb-4">
+    A tranquil luxury beauty sanctuary blending medical-grade technology with relaxing holistic therapies in Austin, Texas.
+</p>
+<p class="text-xs text-secondary">© 2026 Bella Bloom Beauty Studio. All rights reserved.</p>
+</div>
+
+<div>
+<h4 class="font-display font-semibold text-sm mb-4 text-on-surface">Explore Pages</h4>
+<ul class="text-xs space-y-2.5 text-secondary">
+<li><a href="index.html" class="hover:text-primary transition-colors">Home</a></li>
+<li><a href="services.html" class="text-primary font-bold">Curated Services</a></li>
+<li><a href="transformations.html" class="hover:text-primary transition-colors">Transformations &amp; Results</a></li>
+<li><a href="artists.html" class="hover:text-primary transition-colors">Our Beauty Artists</a></li>
+<li><a href="booking.html" class="hover:text-primary transition-colors">Book Appointment</a></li>
+<li><a href="contact.html" class="hover:text-primary transition-colors">Contact &amp; Sanctuary Info</a></li>
+</ul>
+</div>
+
+<div>
+<h4 class="font-display font-semibold text-sm mb-4 text-on-surface">Sanctuary Hours</h4>
+<ul class="text-xs space-y-2 text-on-surface-variant">
+<li class="flex justify-between"><span>Monday – Friday:</span> <span class="font-medium">9:00 AM – 7:00 PM</span></li>
+<li class="flex justify-between"><span>Saturday:</span> <span class="font-medium">10:00 AM – 6:00 PM</span></li>
+<li class="flex justify-between"><span>Sunday:</span> <span class="font-medium">VIP by Appointment</span></li>
+</ul>
+</div>
+
+<div>
+<h4 class="font-display font-semibold text-sm mb-4 text-on-surface">Direct Concierge</h4>
+<p class="text-xs text-on-surface-variant mb-2">2847 Sunset Avenue, Austin, TX 78704</p>
+<p class="text-xs text-on-surface-variant mb-2">📞 (512) 555-0184</p>
+<p class="text-xs text-on-surface-variant mb-4">✉️ hello@bellabloombeauty.com</p>
+</div>
+</div>
+</footer>
+
+<script>
+  function filterServiceTab(cat, btn) {
+    document.querySelectorAll('#serviceTabs button').forEach(b => {
+      b.className = "px-6 py-2.5 rounded-full text-xs font-semibold bg-surface border border-surface-container hover:border-primary text-secondary";
+    });
+    btn.className = "px-6 py-2.5 rounded-full text-xs font-semibold bg-primary text-on-primary shadow-sm";
+
+    document.querySelectorAll('.service-cat').forEach(el => {
+      if (cat === 'all' || el.classList.contains(cat)) {
+        el.classList.remove('hidden');
+      } else {
+        el.classList.add('hidden');
+      }
+    });
+  }
+
+  const mobileServicesBtn = document.getElementById('mobileServicesBtn');
+  const mobileServicesMenu = document.getElementById('mobileServicesMenu');
+  if (mobileServicesBtn && mobileServicesMenu) {
+    mobileServicesBtn.addEventListener('click', () => {
+      mobileServicesMenu.classList.toggle('hidden');
+    });
+  }
+</script>
+</body></html>

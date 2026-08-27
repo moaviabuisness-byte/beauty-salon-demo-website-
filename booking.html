@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Book Appointment - Bella Bloom Beauty Studio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+</style>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "on-tertiary": "#ffffff",
+          "error-container": "#ffdad6",
+          "on-tertiary-fixed-variant": "#4a4644",
+          "tertiary-fixed": "#e9e1de",
+          "primary-container": "#d48c9a",
+          "on-secondary-fixed-variant": "#51443d",
+          "primary": "#894c59",
+          "secondary-container": "#f2dfd5",
+          "on-primary-fixed": "#380a18",
+          "error": "#ba1a1a",
+          "primary-fixed": "#ffd9df",
+          "surface-variant": "#e3e2e0",
+          "on-surface-variant": "#524345",
+          "on-primary": "#ffffff",
+          "primary-fixed-dim": "#ffb1c0",
+          "secondary-fixed": "#f2dfd5",
+          "surface-container-lowest": "#ffffff",
+          "on-secondary": "#ffffff",
+          "tertiary-fixed-dim": "#ccc5c2",
+          "surface-tint": "#894c59",
+          "surface-bright": "#faf9f6",
+          "on-surface": "#1a1c1a",
+          "on-secondary-container": "#6f625a",
+          "inverse-primary": "#ffb1c0",
+          "tertiary": "#625d5b",
+          "tertiary-container": "#a59f9c",
+          "on-tertiary-fixed": "#1e1b19",
+          "inverse-on-surface": "#f2f1ee",
+          "outline": "#847375",
+          "surface-container-high": "#e9e8e5",
+          "inverse-surface": "#2f312f",
+          "on-primary-container": "#5a2633",
+          "on-error-container": "#93000a",
+          "on-background": "#1a1c1a",
+          "outline-variant": "#d6c2c4",
+          "surface-container-highest": "#e3e2e0",
+          "secondary": "#695c54",
+          "surface-container": "#efeeeb",
+          "on-tertiary-container": "#3a3634",
+          "secondary-fixed-dim": "#d5c3b9",
+          "surface-dim": "#dbdad7",
+          "surface-container-low": "#f4f3f1",
+          "on-error": "#ffffff",
+          "surface": "#faf9f6",
+          "on-primary-fixed-variant": "#6d3542",
+          "background": "#faf9f6",
+          "on-secondary-fixed": "#231a14"
+        },
+        borderRadius: {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        spacing: {
+          "unit": "8px",
+          "gutter": "24px",
+          "margin-mobile": "20px",
+          "container-max": "1280px",
+          "margin-desktop": "64px"
+        },
+        fontFamily: {
+          "label-lg": ["Plus Jakarta Sans"],
+          "headline-md": ["Playfair Display"],
+          "headline-lg": ["Playfair Display"],
+          "display-lg-mobile": ["Playfair Display"],
+          "body-lg": ["Plus Jakarta Sans"],
+          "display-lg": ["Playfair Display"],
+          "label-md": ["Plus Jakarta Sans"],
+          "body-md": ["Plus Jakarta Sans"]
+        },
+        fontSize: {
+          "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+          "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "500" }],
+          "headline-lg": ["48px", { "lineHeight": "56px", "fontWeight": "500" }],
+          "display-lg-mobile": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+          "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+          "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+          "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+          "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+        }
+      }
+    }
+  }
+</script>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
+
+<main class="min-h-screen flex flex-col md:flex-row">
+<!-- Left Side: Exact Stitch Hero Image / Brand Anchor -->
+<div class="hidden md:flex md:w-[45%] lg:w-1/2 relative bg-surface-container-low">
+<div class="absolute inset-0 z-0">
+<img class="object-cover w-full h-full opacity-90" data-alt="A serene, high-end beauty studio interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWR3DLciXHRPAL0_p6KP_5V3CJOpmb5paGT3rCeGGq-VfVKy0bOyh3iUYAqGE1-o9zciJ2KF2CcE_riYciEw7MXacYM46tG4doEuqLeVKnkdXRHerlTGjGd6dLzdY5yNqW-k1fmoG-J2dyby4w_VQSNxbRmpYpARMOt21kPJhRqmlpQtn0ntsF90XWKcQ9lvmMNQwNSBXtQ7PYUJkL-e41x_B3mkQPSg-f42Xny_AN9PUGqJezrwl6AKFn4fJUcrsXROr9lr1fTfY"/>
+</div>
+<div class="relative z-10 p-margin-desktop flex flex-col h-full justify-between bg-gradient-to-r from-surface-container/60 to-transparent">
+<div>
+<a class="flex items-center gap-3.5 group hover:opacity-95 transition-all duration-300 mb-16" href="index.html">
+  <div class="w-11 h-11 md:w-12 md:h-12 rounded-2xl bg-gradient-to-br from-primary-container/50 via-primary/10 to-secondary-container/70 border border-primary/25 flex items-center justify-center text-primary shadow-sm group-hover:scale-105 group-hover:shadow-md transition-all duration-300">
+    <svg class="w-6 h-6 md:w-7 md:h-7 text-primary fill-current" viewBox="0 0 24 24">
+      <path d="M12 2C11.5 4 10 7.5 7 9C4 10.5 2 12 2 14C2 17.3 4.7 20 8 20C10.5 20 11.5 18.5 12 17C12.5 18.5 13.5 20 16 20C19.3 20 22 17.3 22 14C22 12 20 10.5 17 9C14 7.5 12.5 4 12 2ZM12 6.5C12.8 8.8 14.5 10.8 17.2 11.8C18.8 12.4 19.8 13.3 19.8 14.5C19.8 16.3 18.1 17.8 16 17.8C14.2 17.8 13.2 16.5 12.8 14.8C12.7 14.4 12.3 14.1 11.9 14.1C11.5 14.1 11.1 14.4 11 14.8C10.6 16.5 9.6 17.8 7.8 17.8C5.7 17.8 4 16.3 4 14.5C4 13.3 5 12.4 6.6 11.8C9.3 10.8 11 8.8 11.8 6.5C11.9 6.2 12.1 6.2 12 6.5Z"/>
+    </svg>
+  </div>
+  <div class="flex flex-col">
+    <span class="font-display font-bold text-2xl md:text-3xl tracking-tight text-primary leading-none group-hover:text-on-primary-container transition-colors">
+      Bella <span class="font-normal italic text-on-surface">Bloom</span>
+    </span>
+    <span class="text-[9px] md:text-[10px] tracking-[0.25em] uppercase font-bold text-secondary mt-1">
+      Beauty Studio • Austin
+    </span>
+  </div>
+</a>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-6">Book Your <br/>Transformation</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">Step into luxury. Reserve your moment of personalized care and elevate your natural beauty with our expert specialists.</p>
+</div>
+<div class="mt-auto">
+<a class="inline-flex items-center text-primary hover:opacity-80 transition-all group" href="index.html">
+<span class="material-symbols-outlined mr-2 group-hover:-translate-x-1 transition-transform">arrow_back</span>
+<span class="font-label-lg text-label-lg">Return to Home</span>
+</a>
+</div>
+</div>
+</div>
+
+<!-- Mobile Header -->
+<div class="md:hidden flex items-center justify-between p-margin-mobile bg-surface sticky top-0 z-50 border-b border-surface-container-high/30">
+<a href="index.html">
+  <img alt="Bella Bloom" class="h-8 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2Y7UFpBX-BMDpP0vqMPrDsINGmCWzENOcKl8lt9SvCQg6FGhJX4aeaP8dy3AyfgqMZd-zA-W3ejjmxbzgLNgZTf3euvskN_I2H1ip2c7dR2UyqNwCRYC3kX7aNy1IYYPCZv01mT8BFu-iQsK5d4caEHN1YdCL5gVpShtMD3ykJkFMPZynq5J6XY0KxwKJ2x4szMsGduviDHmk-S5jq_L7EOb1_YduH2PGTSBxv671NvWa2huHJbKkOuRzHJZS8AKa5uhUnDXJ6GA"/>
+</a>
+<a class="text-on-surface-variant p-2 rounded-full hover:bg-surface-container-low transition-colors" href="index.html">
+<span class="material-symbols-outlined">close</span>
+</a>
+</div>
+
+<!-- Right Side: Exact Stitch Booking Flow -->
+<div class="w-full md:w-[55%] lg:w-1/2 overflow-y-auto bg-surface-bright flex flex-col">
+<div class="max-w-2xl mx-auto w-full px-margin-mobile md:px-margin-desktop py-12 md:py-24">
+
+<!-- Progress Indicator (Exact Stitch 4-Steps) -->
+<div class="mb-12">
+<div class="flex items-center justify-between relative">
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-px bg-surface-container-highest z-0"></div>
+<div id="progBar" class="absolute left-0 top-1/2 -translate-y-1/2 h-0.5 bg-primary z-0 transition-all duration-300 w-0"></div>
+
+<!-- Step 1 -->
+<div onclick="setStep(1)" class="relative z-10 flex flex-col items-center bg-surface-bright px-2 cursor-pointer">
+<div id="stepCircle1" class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-md text-label-md mb-2">1</div>
+<span id="stepText1" class="font-label-md text-label-md text-primary">Service</span>
+</div>
+<!-- Step 2 -->
+<div onclick="setStep(2)" class="relative z-10 flex flex-col items-center bg-surface-bright px-2 cursor-pointer">
+<div id="stepCircle2" class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-label-md text-label-md mb-2">2</div>
+<span id="stepText2" class="font-label-md text-label-md text-on-surface-variant">Artist</span>
+</div>
+<!-- Step 3 -->
+<div onclick="setStep(3)" class="relative z-10 flex flex-col items-center bg-surface-bright px-2 cursor-pointer">
+<div id="stepCircle3" class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-label-md text-label-md mb-2">3</div>
+<span id="stepText3" class="font-label-md text-label-md text-on-surface-variant">Time</span>
+</div>
+<!-- Step 4 -->
+<div onclick="setStep(4)" class="relative z-10 flex flex-col items-center bg-surface-bright px-2 cursor-pointer">
+<div id="stepCircle4" class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-label-md text-label-md mb-2">4</div>
+<span id="stepText4" class="font-label-md text-label-md text-on-surface-variant">Details</span>
+</div>
+</div>
+</div>
+
+<!-- Step 1 Content: Select Service -->
+<div id="stepPane1">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Select a Service</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Choose from our curated menu of aesthetic treatments.</p>
+
+<div class="space-y-8">
+<!-- Skincare -->
+<div>
+<h3 class="font-label-lg text-label-lg text-primary uppercase tracking-wider mb-4 border-b border-surface-container-highest pb-2">Skincare</h3>
+<div class="space-y-3">
+<label class="flex items-center justify-between p-4 rounded-xl border-2 border-primary bg-secondary-container/20 cursor-pointer transition-all service-item">
+<div class="flex items-center gap-4">
+<input class="text-primary focus:ring-primary w-5 h-5 border-outline" name="serviceRadio" type="radio" checked value="Signature HydraFacial|$199|60 Min" onchange="syncServiceChoice(this)"/>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface font-bold">Signature HydraFacial</div>
+<div class="font-body-md text-body-md text-on-surface-variant text-sm mt-1">60 Min • Deep cleanse, extract, and hydrate.</div>
+</div>
+</div>
+<div class="font-label-lg text-label-lg text-primary font-bold whitespace-nowrap">$199</div>
+</label>
+
+<label class="flex items-center justify-between p-4 rounded-xl border border-surface-container-highest bg-surface hover:border-primary-container hover:bg-secondary-container/20 cursor-pointer transition-all service-item">
+<div class="flex items-center gap-4">
+<input class="text-primary focus:ring-primary w-5 h-5 border-outline" name="serviceRadio" type="radio" value="Luminous Chemical Peel|$150|45 Min" onchange="syncServiceChoice(this)"/>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface font-bold">Luminous Chemical Peel</div>
+<div class="font-body-md text-body-md text-on-surface-variant text-sm mt-1">45 Min • Resurface and rejuvenate dull skin.</div>
+</div>
+</div>
+<div class="font-label-lg text-label-lg text-primary font-bold whitespace-nowrap">$150</div>
+</label>
+</div>
+</div>
+
+<!-- Hair -->
+<div>
+<h3 class="font-label-lg text-label-lg text-primary uppercase tracking-wider mb-4 border-b border-surface-container-highest pb-2">Hair Artistry</h3>
+<div class="space-y-3">
+<label class="flex items-center justify-between p-4 rounded-xl border border-surface-container-highest bg-surface hover:border-primary-container hover:bg-secondary-container/20 cursor-pointer transition-all service-item">
+<div class="flex items-center gap-4">
+<input class="text-primary focus:ring-primary w-5 h-5 border-outline" name="serviceRadio" type="radio" value="Balayage & Styling|$250|180 Min" onchange="syncServiceChoice(this)"/>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface font-bold">Balayage &amp; Styling</div>
+<div class="font-body-md text-body-md text-on-surface-variant text-sm mt-1">180 Min • Custom hand-painted highlights.</div>
+</div>
+</div>
+<div class="font-label-lg text-label-lg text-primary font-bold whitespace-nowrap">$250</div>
+</label>
+
+<label class="flex items-center justify-between p-4 rounded-xl border border-surface-container-highest bg-surface hover:border-primary-container hover:bg-secondary-container/20 cursor-pointer transition-all service-item">
+<div class="flex items-center gap-4">
+<input class="text-primary focus:ring-primary w-5 h-5 border-outline" name="serviceRadio" type="radio" value="Precision Haircut & Blowout|$85|60 Min" onchange="syncServiceChoice(this)"/>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface font-bold">Precision Haircut & Blowout</div>
+<div class="font-body-md text-body-md text-on-surface-variant text-sm mt-1">60 Min • Tailored modern cut and luxury blowout.</div>
+</div>
+</div>
+<div class="font-label-lg text-label-lg text-primary font-bold whitespace-nowrap">$85</div>
+</label>
+</div>
+</div>
+</div>
+
+<div class="mt-12 flex justify-end">
+<button onclick="setStep(2)" class="bg-primary text-on-primary font-label-lg text-label-lg px-8 py-3.5 rounded-full hover:scale-105 transition-transform duration-300 shadow-sm flex items-center gap-2">
+    Next Step: Select Artist
+    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+
+<!-- Step 2 Content: Select Artist (Exact Stitch Artist Profiles) -->
+<div id="stepPane2" class="hidden">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Select Your Artist</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Choose one of our dedicated beauty professionals.</p>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Sophia -->
+<label class="artist-choice flex items-center gap-4 p-4 rounded-2xl border-2 border-primary bg-secondary-container/20 cursor-pointer transition-all">
+<input type="radio" name="artistRadio" value="Sophia Carter (Hair Color & Balayage)" checked class="text-primary focus:ring-primary" onchange="syncArtistChoice(this)">
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBz7sQO1ydi7CTnoC6H-fS6wY9L2qjjIEkBU3vCrwIWJ2raH2udyZPzDcLpO-pxYQeej4mO-Uf4sNrjHN-Lc9Cr4y46V0eiq7dsYLO5DpfyNwS9Ndor4HTqqFntPvoh_9imRd9CbhaXE1uzU423K5DtyTFaGM0ctrttDhbgQoRzbC5UDYrU_FOurTfkzX3x9UzL3B2B09_FxVSkXnB4-hDMmRKMa4Dx1zBebYCUO9WzpIftmMkhkVQt" class="w-14 h-14 rounded-full object-cover">
+<div>
+<h4 class="font-label-lg text-on-surface font-bold">Sophia Carter</h4>
+<p class="text-xs text-secondary">Hair Color & Balayage • 8 Yrs</p>
+</div>
+</label>
+
+<!-- Emma -->
+<label class="artist-choice flex items-center gap-4 p-4 rounded-2xl border border-surface-container-highest bg-surface cursor-pointer hover:border-primary transition-all">
+<input type="radio" name="artistRadio" value="Emma Williams (Haircuts & Styling)" class="text-primary focus:ring-primary" onchange="syncArtistChoice(this)">
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDl94UMjgL3rWWJB8hEW1YU3D2R19-f3P8sak6UyB5Zu0q4hXjN0x_cGZO5_u_P8aMzIUqzMBXvBkkGsMizkl_FqxwMykBEvVvK0isvmiYlRRIRLhBgy4Rt6iNTfm5SsFLSK4JHuJPz2kwH0_xlF_PKaDkCoxipxM1zNDAbtUwWx0mSEzN8AFOUl2TYCux10nPKkO3VvSk6SY5Jbo1ePNscm2Kj_t5vYazRoKkn4UhtyA_-5iqibhsC" class="w-14 h-14 rounded-full object-cover">
+<div>
+<h4 class="font-label-lg text-on-surface font-bold">Emma Williams</h4>
+<p class="text-xs text-secondary">Haircuts & Styling • 6 Yrs</p>
+</div>
+</label>
+
+<!-- Olivia -->
+<label class="artist-choice flex items-center gap-4 p-4 rounded-2xl border border-surface-container-highest bg-surface cursor-pointer hover:border-primary transition-all">
+<input type="radio" name="artistRadio" value="Olivia Martinez (Nails & Nail Art)" class="text-primary focus:ring-primary" onchange="syncArtistChoice(this)">
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-8UeB2w9uMVt036eL938WPN9V80Zp2DKh3RwHZ4TQK1dmr18DmqeVn0PfHwtuS215N4h1Ki5E_osSx6E3OHZPlI1xEcwp198a8hCWhdUGanq7Qz5NlLrx4p0htEtlwXn5GWqurV5-gKx91v0qbDqmAetGPqAagxLwJY2LGUz8mL0j9xJZNUbRvEifJjTSmEuilVCI_PG18htFH3t7MUBatSv30Tw6cjRhGNVF57IAPOMek7UDLv2F" class="w-14 h-14 rounded-full object-cover">
+<div>
+<h4 class="font-label-lg text-on-surface font-bold">Olivia Martinez</h4>
+<p class="text-xs text-secondary">Nails & Nail Art • 5 Yrs</p>
+</div>
+</label>
+
+<!-- Mia -->
+<label class="artist-choice flex items-center gap-4 p-4 rounded-2xl border border-surface-container-highest bg-surface cursor-pointer hover:border-primary transition-all">
+<input type="radio" name="artistRadio" value="Mia Anderson (Skincare & Facials)" class="text-primary focus:ring-primary" onchange="syncArtistChoice(this)">
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnjWa_i_jjn1S9OgVYQPTgNyJN-TtRqbT-PPzsjrhmH4q7SgaVykjzZLVYZDMWcCRlhls0FNFRCmKNBW1uRJkGs5wxeYkp8dqmanZP9mUSAj9ZQ_UDDprXnZfP80sCseUGY_BSwwAU6BcmsKaCWvgN4gY5ODlaJ34oCLmaB_V6BpyWEPQHgsT4cbDPk3yQtKxq2XizCFVog-tRqyP7EJ08eQ81hnQIjPCoNdpPP6ZsbGH3AzJtmlCi" class="w-14 h-14 rounded-full object-cover">
+<div>
+<h4 class="font-label-lg text-on-surface font-bold">Mia Anderson</h4>
+<p class="text-xs text-secondary">Skincare & Facials • 6 Yrs</p>
+</div>
+</label>
+</div>
+
+<div class="mt-12 flex justify-between items-center">
+<button onclick="setStep(1)" class="text-secondary hover:text-primary font-label-lg flex items-center gap-1">
+  <span class="material-symbols-outlined text-sm">arrow_back</span> Back
+</button>
+<button onclick="setStep(3)" class="bg-primary text-on-primary font-label-lg px-8 py-3.5 rounded-full hover:scale-105 transition-transform shadow-sm flex items-center gap-2">
+  Next Step: Pick Time
+  <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+
+<!-- Step 3 Content: Select Date & Time -->
+<div id="stepPane3" class="hidden">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Select Date &amp; Time</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Austin Sanctuary Time (CST).</p>
+
+<div class="space-y-6">
+<div>
+  <label class="block font-label-md text-secondary uppercase mb-2">Reservation Date</label>
+  <input type="date" id="bookDate" value="2026-08-28" min="2026-08-26" class="w-full p-4 rounded-xl border border-surface-container-highest bg-surface font-medium focus:ring-2 focus:ring-primary">
+</div>
+
+<div>
+  <label class="block font-label-md text-secondary uppercase mb-2">Available Sanctuary Hours</label>
+  <div class="grid grid-cols-3 gap-3">
+    <button type="button" onclick="selectSlot(this)" class="slot-btn p-3 rounded-xl border-2 border-primary bg-primary text-on-primary font-bold text-xs">09:30 AM</button>
+    <button type="button" onclick="selectSlot(this)" class="slot-btn p-3 rounded-xl border border-surface-container-highest bg-surface text-on-surface font-bold text-xs hover:border-primary">11:00 AM</button>
+    <button type="button" onclick="selectSlot(this)" class="slot-btn p-3 rounded-xl border border-surface-container-highest bg-surface text-on-surface font-bold text-xs hover:border-primary">01:30 PM</button>
+    <button type="button" onclick="selectSlot(this)" class="slot-btn p-3 rounded-xl border border-surface-container-highest bg-surface text-on-surface font-bold text-xs hover:border-primary">03:00 PM</button>
+    <button type="button" onclick="selectSlot(this)" class="slot-btn p-3 rounded-xl border border-surface-container-highest bg-surface text-on-surface font-bold text-xs hover:border-primary">04:30 PM</button>
+    <button type="button" onclick="selectSlot(this)" class="slot-btn p-3 rounded-xl border border-surface-container-highest bg-surface text-on-surface font-bold text-xs hover:border-primary">06:00 PM</button>
+  </div>
+</div>
+</div>
+
+<div class="mt-12 flex justify-between items-center">
+<button onclick="setStep(2)" class="text-secondary hover:text-primary font-label-lg flex items-center gap-1">
+  <span class="material-symbols-outlined text-sm">arrow_back</span> Back
+</button>
+<button onclick="setStep(4)" class="bg-primary text-on-primary font-label-lg px-8 py-3.5 rounded-full hover:scale-105 transition-transform shadow-sm flex items-center gap-2">
+  Next Step: Client Details
+  <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+
+<!-- Step 4 Content: Guest Details & Review -->
+<div id="stepPane4" class="hidden">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Guest Details &amp; Summary</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Review your booking and confirm.</p>
+
+<div class="space-y-4">
+<div>
+  <label class="block text-xs font-semibold text-secondary mb-1">Full Name *</label>
+  <input type="text" id="custName" value="Ameer Moavia" class="w-full p-3.5 rounded-xl border border-surface-container-highest bg-surface text-sm focus:ring-2 focus:ring-primary">
+</div>
+<div>
+  <label class="block text-xs font-semibold text-secondary mb-1">Email Address *</label>
+  <input type="email" id="custEmail" value="moaviabuisness@gmail.com" class="w-full p-3.5 rounded-xl border border-surface-container-highest bg-surface text-sm focus:ring-2 focus:ring-primary">
+</div>
+<div>
+  <label class="block text-xs font-semibold text-secondary mb-1">Phone Number *</label>
+  <input type="tel" id="custPhone" value="(512) 555-0184" class="w-full p-3.5 rounded-xl border border-surface-container-highest bg-surface text-sm focus:ring-2 focus:ring-primary">
+</div>
+
+<!-- Summary Card -->
+<div class="bg-surface-container p-6 rounded-2xl border border-surface-container-high text-xs space-y-2 mt-6">
+  <div class="flex justify-between"><span class="text-secondary">Service:</span> <span class="font-bold text-on-surface" id="sumService">Signature HydraFacial</span></div>
+  <div class="flex justify-between"><span class="text-secondary">Artist:</span> <span class="font-medium" id="sumArtist">Sophia Carter</span></div>
+  <div class="flex justify-between"><span class="text-secondary">Time:</span> <span class="font-medium text-primary" id="sumTime">2026-08-28 @ 09:30 AM</span></div>
+  <div class="flex justify-between text-sm font-bold pt-2 border-t border-surface-container-highest"><span class="text-on-surface">Total:</span> <span class="text-primary font-headline-md" id="sumPrice">$199</span></div>
+</div>
+
+<button onclick="showModal()" class="w-full mt-6 bg-primary text-on-primary font-label-lg py-4 rounded-full hover:bg-on-primary-container shadow-md flex justify-center items-center gap-2">
+  <span>Confirm Reservation</span>
+  <span class="material-symbols-outlined text-sm">check_circle</span>
+</button>
+</div>
+
+<div class="mt-6 flex justify-start">
+<button onclick="setStep(3)" class="text-secondary hover:text-primary font-label-lg flex items-center gap-1">
+  <span class="material-symbols-outlined text-sm">arrow_back</span> Back
+</button>
+</div>
+</div>
+
+</div>
+</div>
+</main>
+
+<!-- Confirmation Modal -->
+<div id="bookingModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+<div class="bg-surface rounded-3xl max-w-md w-full p-8 text-center shadow-2xl border border-surface-container">
+  <div class="w-14 h-14 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4">
+    <span class="material-symbols-outlined text-3xl">verified</span>
+  </div>
+  <h3 class="font-display-lg text-2xl font-bold text-on-surface mb-2">Reservation Confirmed!</h3>
+  <p class="text-xs text-on-surface-variant mb-6">A confirmation receipt has been dispatched to <strong id="recEmail" class="text-primary">moaviabuisness@gmail.com</strong>.</p>
+  <a href="index.html" class="block w-full py-3.5 bg-primary text-on-primary rounded-full font-label-lg text-sm">Return to Sanctuary Home</a>
+</div>
+</div>
+
+<script>
+  let activeSlot = "09:30 AM";
+  let activeServiceName = "Signature HydraFacial";
+  let activePrice = "$199";
+  let activeArtistName = "Sophia Carter";
+
+  function setStep(step) {
+    document.getElementById('stepPane1').classList.toggle('hidden', step !== 1);
+    document.getElementById('stepPane2').classList.toggle('hidden', step !== 2);
+    document.getElementById('stepPane3').classList.toggle('hidden', step !== 3);
+    document.getElementById('stepPane4').classList.toggle('hidden', step !== 4);
+
+    const widths = { 1: '0%', 2: '33%', 3: '66%', 4: '100%' };
+    document.getElementById('progBar').style.width = widths[step];
+
+    for (let i = 1; i <= 4; i++) {
+      const circle = document.getElementById(`stepCircle${i}`);
+      const txt = document.getElementById(`stepText${i}`);
+      if (i <= step) {
+        circle.className = "w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-md text-label-md mb-2";
+        txt.className = "font-label-md text-label-md text-primary";
+      } else {
+        circle.className = "w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-label-md text-label-md mb-2";
+        txt.className = "font-label-md text-label-md text-on-surface-variant";
+      }
+    }
+    updateSummary();
+  }
+
+  function syncServiceChoice(input) {
+    document.querySelectorAll('.service-item').forEach(el => {
+      el.className = "flex items-center justify-between p-4 rounded-xl border border-surface-container-highest bg-surface hover:border-primary-container hover:bg-secondary-container/20 cursor-pointer transition-all service-item";
+    });
+    input.closest('label').className = "flex items-center justify-between p-4 rounded-xl border-2 border-primary bg-secondary-container/20 cursor-pointer transition-all service-item";
+    const [name, price] = input.value.split('|');
+    activeServiceName = name;
+    activePrice = price;
+    updateSummary();
+  }
+
+  function syncArtistChoice(input) {
+    document.querySelectorAll('.artist-choice').forEach(el => {
+      el.className = "artist-choice flex items-center gap-4 p-4 rounded-2xl border border-surface-container-highest bg-surface cursor-pointer hover:border-primary transition-all";
+    });
+    input.closest('label').className = "artist-choice flex items-center gap-4 p-4 rounded-2xl border-2 border-primary bg-secondary-container/20 cursor-pointer transition-all";
+    activeArtistName = input.value;
+    updateSummary();
+  }
+
+  function selectSlot(btn) {
+    document.querySelectorAll('.slot-btn').forEach(b => {
+      b.className = "slot-btn p-3 rounded-xl border border-surface-container-highest bg-surface text-on-surface font-bold text-xs hover:border-primary";
+    });
+    btn.className = "slot-btn p-3 rounded-xl border-2 border-primary bg-primary text-on-primary font-bold text-xs";
+    activeSlot = btn.innerText;
+    updateSummary();
+  }
+
+  function updateSummary() {
+    document.getElementById('sumService').innerText = activeServiceName;
+    document.getElementById('sumArtist').innerText = activeArtistName;
+    document.getElementById('sumPrice').innerText = activePrice;
+    const d = document.getElementById('bookDate').value || '2026-08-28';
+    document.getElementById('sumTime').innerText = `${d} @ ${activeSlot}`;
+  }
+
+  function showModal() {
+    document.getElementById('recEmail').innerText = document.getElementById('custEmail').value || 'moaviabuisness@gmail.com';
+    document.getElementById('bookingModal').classList.remove('hidden');
+  }
+
+  // Pre-fill from query params if passed
+  window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const artist = params.get('artist');
+    if (artist) {
+      document.querySelectorAll('input[name="artistRadio"]').forEach(r => {
+        if (r.value.toLowerCase().includes(artist.toLowerCase())) {
+          r.checked = true;
+          syncArtistChoice(r);
+        }
+      });
+    }
+    updateSummary();
+  });
+</script>
+</body>
+</html>
