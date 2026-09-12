@@ -1,0 +1,8 @@
+# Dependencies
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+
+# Raw Reference Files
+*_raw.html

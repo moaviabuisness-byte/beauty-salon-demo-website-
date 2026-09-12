@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Custom Treatment Configurator - Bella Bloom Beauty Studio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#894c59",
+                        "primary-container": "#d48c9a",
+                        "primary-fixed": "#ffd9df",
+                        "primary-fixed-dim": "#ffb1c0",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#5a2633",
+                        "secondary": "#695c54",
+                        "secondary-container": "#f2dfd5",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#625d5b",
+                        "background": "#faf9f6",
+                        "surface": "#faf9f6",
+                        "surface-bright": "#faf9f6",
+                        "surface-dim": "#dbdad7",
+                        "surface-container-low": "#f4f3f1",
+                        "surface-container": "#efeeeb",
+                        "surface-container-high": "#e9e8e5",
+                        "surface-container-highest": "#e3e2e0",
+                        "on-surface": "#1a1c1a",
+                        "on-surface-variant": "#524345",
+                        "outline": "#847375",
+                        "outline-variant": "#d6c2c4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "margin-mobile": "20px",
+                        "unit": "8px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "label-lg": ["Plus Jakarta Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar (Exact Stitch Logo) -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md transition-all duration-300 border-b border-surface-container-low/30" id="navbar">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-unit max-w-container-max mx-auto">
+<a class="flex-shrink-0 flex items-center gap-2" href="index.html">
+<img alt="Bella Bloom Beauty Studio Logo" class="h-8 md:h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9icylBPKJLMrm1fqBIjuQOMw1yGj3dhYt1Hxe7lOo3vLxytqjH71mA6nyNZOAnkgIEJEZ6uFJlX11hvDu11rx1fXx_7Hk8nv8If5-f-L9bT986YqaWhhp43t0KwWhkfayDzmAmHqf6cJ0qkwy_mpJNU5_XGhlOMmCtTanojMDG78RkujA65FDuFhiJmWpmLBgEse8lzuQ8PZc08laNEwZNC5sN5SpYHDesMI_XUplD3VepMVAKyRl0zR2neW1DQmCkpOnENqTLb0"/>
+<span class="font-headline-md text-headline-md font-medium text-primary hidden lg:block">Bella Bloom Beauty Studio</span>
+</a>
+<div class="hidden md:flex gap-8 items-center font-label-lg text-label-lg">
+<a class="text-secondary hover:text-primary transition-colors" href="index.html#services">Services</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="customize.html">Custom Treatment</a>
+<a class="text-secondary hover:text-primary transition-colors" href="transformations.html">Results</a>
+<a class="text-secondary hover:text-primary transition-colors" href="artists.html">Team</a>
+<a class="text-secondary hover:text-primary transition-colors" href="contact.html">Contact</a>
+</div>
+<div class="flex items-center gap-2">
+<a class="hidden md:inline-flex items-center justify-center bg-primary text-on-primary font-label-lg text-label-lg px-6 py-3 rounded-full hover:opacity-80 transition-all duration-200 shadow-sm active:scale-95" href="booking.html">Book Now</a>
+</div>
+</div>
+</nav>
+
+<main class="pt-[88px] max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-20">
+<!-- Header -->
+<div class="text-center max-w-3xl mx-auto mb-16">
+<span class="inline-block py-1 px-4 rounded-full bg-secondary-container text-on-secondary-container font-label-md mb-4">
+    Interactive Treatment Configurator
+</span>
+<h1 class="font-display-lg text-display-lg text-primary mb-4">Craft Your Bespoke Ritual</h1>
+<p class="font-body-lg text-on-surface-variant">
+    Select your foundation service, add custom beauty boosters, and preview your personalized ritual specs in real-time.
+</p>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+<!-- Left Config Options -->
+<div class="lg:col-span-8 space-y-10">
+
+<!-- 1. Base Service -->
+<div>
+<h3 class="font-headline-md text-on-surface mb-4 flex items-center gap-2">
+  <span class="w-8 h-8 rounded-full bg-primary text-on-primary font-bold text-sm inline-flex items-center justify-center">1</span>
+  Select Base Treatment
+</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+  <label class="block p-5 rounded-2xl border-2 border-primary bg-secondary-container/20 cursor-pointer base-card transition-all">
+    <input type="radio" name="base" value="Signature HydraFacial|199|60 Min" checked class="hidden" onchange="recalculate()">
+    <div class="flex justify-between font-bold text-on-surface mb-1">
+      <span>Signature HydraFacial</span>
+      <span class="text-primary">$199</span>
+    </div>
+    <p class="text-xs text-on-surface-variant">Deep cleanse, extract, and antioxidant vortex infusion. (60 Min)</p>
+  </label>
+
+  <label class="block p-5 rounded-2xl border border-surface-container-highest bg-surface cursor-pointer base-card hover:border-primary transition-all">
+    <input type="radio" name="base" value="Luminous Chemical Peel|150|45 Min" class="hidden" onchange="recalculate()">
+    <div class="flex justify-between font-bold text-on-surface mb-1">
+      <span>Luminous Chemical Peel</span>
+      <span class="text-primary">$150</span>
+    </div>
+    <p class="text-xs text-on-surface-variant">Resurface and rejuvenate dull skin with fruit enzymes. (45 Min)</p>
+  </label>
+
+  <label class="block p-5 rounded-2xl border border-surface-container-highest bg-surface cursor-pointer base-card hover:border-primary transition-all">
+    <input type="radio" name="base" value="Balayage & Styling|250|180 Min" class="hidden" onchange="recalculate()">
+    <div class="flex justify-between font-bold text-on-surface mb-1">
+      <span>Balayage &amp; Styling</span>
+      <span class="text-primary">$250</span>
+    </div>
+    <p class="text-xs text-on-surface-variant">Hand-painted highlights, gloss toner, and signature blowout. (180 Min)</p>
+  </label>
+
+  <label class="block p-5 rounded-2xl border border-surface-container-highest bg-surface cursor-pointer base-card hover:border-primary transition-all">
+    <input type="radio" name="base" value="Bella Full Spa Ritual|295|120 Min" class="hidden" onchange="recalculate()">
+    <div class="flex justify-between font-bold text-on-surface mb-1">
+      <span>Bella Full Spa Ritual</span>
+      <span class="text-primary">$295</span>
+    </div>
+    <p class="text-xs text-on-surface-variant">Comprehensive face sculpting, back scrub &amp; lymphatic reset. (120 Min)</p>
+  </label>
+</div>
+</div>
+
+<!-- 2. Targeted Boosters -->
+<div>
+<h3 class="font-headline-md text-on-surface mb-4 flex items-center gap-2">
+  <span class="w-8 h-8 rounded-full bg-primary text-on-primary font-bold text-sm inline-flex items-center justify-center">2</span>
+  Add Targeted Enhancements
+</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+  <label class="flex items-center justify-between p-4 rounded-2xl border border-surface-container-highest bg-surface cursor-pointer hover:border-primary transition-all">
+    <div class="flex items-center gap-3">
+      <input type="checkbox" value="24K Gold Collagen Plump|45" class="rounded text-primary focus:ring-primary h-5 w-5" onchange="recalculate()">
+      <div>
+        <span class="font-bold text-sm block">24K Gold Collagen Plump</span>
+        <span class="text-xs text-secondary">Anti-wrinkle moisture seal</span>
+      </div>
+    </div>
+    <span class="font-bold text-primary text-sm">+$45</span>
+  </label>
+
+  <label class="flex items-center justify-between p-4 rounded-2xl border border-surface-container-highest bg-surface cursor-pointer hover:border-primary transition-all">
+    <div class="flex items-center gap-3">
+      <input type="checkbox" value="Cryo Ice Depuffing Globes|35" class="rounded text-primary focus:ring-primary h-5 w-5" onchange="recalculate()">
+      <div>
+        <span class="font-bold text-sm block">Cryo Ice Depuffing Globes</span>
+        <span class="text-xs text-secondary">Instant redness reduction</span>
+      </div>
+    </div>
+    <span class="font-bold text-primary text-sm">+$35</span>
+  </label>
+
+  <label class="flex items-center justify-between p-4 rounded-2xl border border-surface-container-highest bg-surface cursor-pointer hover:border-primary transition-all">
+    <div class="flex items-center gap-3">
+      <input type="checkbox" value="LED Collagen Phototherapy|40" class="rounded text-primary focus:ring-primary h-5 w-5" onchange="recalculate()">
+      <div>
+        <span class="font-bold text-sm block">LED Collagen Phototherapy</span>
+        <span class="text-xs text-secondary">Red &amp; NIR wavelength glow</span>
+      </div>
+    </div>
+    <span class="font-bold text-primary text-sm">+$40</span>
+  </label>
+
+  <label class="flex items-center justify-between p-4 rounded-2xl border border-surface-container-highest bg-surface cursor-pointer hover:border-primary transition-all">
+    <div class="flex items-center gap-3">
+      <input type="checkbox" value="Rose Quartz Gua Sha Drainage|30" class="rounded text-primary focus:ring-primary h-5 w-5" onchange="recalculate()">
+      <div>
+        <span class="font-bold text-sm block">Rose Quartz Gua Sha</span>
+        <span class="text-xs text-secondary">Tension release sculpting</span>
+      </div>
+    </div>
+    <span class="font-bold text-primary text-sm">+$30</span>
+  </label>
+</div>
+</div>
+
+</div>
+
+<!-- Right Summary Card (Sticky) -->
+<div class="lg:col-span-4">
+<div class="bg-surface-container p-8 rounded-3xl border border-surface-container-high sticky top-28">
+  <span class="font-label-md text-primary font-bold uppercase tracking-wider block mb-2">Live Custom Recipe</span>
+  <h3 class="font-headline-md text-2xl font-bold text-on-surface mb-6">Your Custom Spec</h3>
+
+  <div id="recipeItems" class="space-y-3 text-xs border-b border-surface-container-highest pb-4 mb-4">
+    <!-- Dynamic items inserted here -->
+  </div>
+
+  <div class="flex justify-between items-center text-lg font-bold mb-6">
+    <span>Estimated Total:</span>
+    <span class="text-primary font-headline-lg text-2xl" id="recipeTotal">$199</span>
+  </div>
+
+  <a href="booking.html" class="w-full block text-center py-4 bg-primary text-on-primary rounded-full font-label-lg shadow-md hover:bg-on-primary-container transition-colors">
+    Proceed to Book Custom Ritual
+  </a>
+</div>
+</div>
+</div>
+</main>
+
+<footer class="w-full py-16 bg-surface-container-highest mt-20 border-t border-outline-variant/30 text-center text-xs text-on-surface-variant">
+  © 2026 Bella Bloom Beauty Studio • Austin, TX • (512) 555-0184
+</footer>
+
+<script>
+  function recalculate() {
+    const baseInput = document.querySelector('input[name="base"]:checked');
+    document.querySelectorAll('.base-card').forEach(c => {
+      c.className = "block p-5 rounded-2xl border border-surface-container-highest bg-surface cursor-pointer base-card hover:border-primary transition-all";
+    });
+    baseInput.closest('label').className = "block p-5 rounded-2xl border-2 border-primary bg-secondary-container/20 cursor-pointer base-card transition-all";
+
+    const [baseName, basePrice, baseDuration] = baseInput.value.split('|');
+    let total = parseInt(basePrice);
+
+    const recipeEl = document.getElementById('recipeItems');
+    recipeEl.innerHTML = `
+      <div class="flex justify-between font-bold text-on-surface pb-1">
+        <span>${baseName}</span>
+        <span>$${basePrice}</span>
+      </div>
+      <div class="text-secondary pb-2">Duration: ${baseDuration}</div>
+    `;
+
+    document.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+      const [name, price] = cb.value.split('|');
+      total += parseInt(price);
+      recipeEl.innerHTML += `
+        <div class="flex justify-between text-secondary py-0.5">
+          <span>+ ${name}</span>
+          <span class="font-bold text-primary">+$${price}</span>
+        </div>
+      `;
+    });
+
+    document.getElementById('recipeTotal').innerText = '$' + total;
+  }
+
+  recalculate();
+</script>
+</body></html>

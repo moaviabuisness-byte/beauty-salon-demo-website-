@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Dashboard - Bella Bloom</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(150px, 1fr));
+    gap: 1px;
+    background-color: #e3e2e0; /* surface-container-highest */
+    border: 1px solid #e3e2e0;
+  }
+  .calendar-header {
+    background-color: #f4f3f1; /* surface-container-low */
+    text-align: center;
+    padding: 0.5rem;
+    font-weight: 600;
+  }
+  .calendar-day {
+    background-color: #faf9f6; /* surface */
+    min-height: 400px;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+</style>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#894c59",
+          "on-primary": "#ffffff",
+          "primary-container": "#d48c9a",
+          "on-primary-container": "#5a2633",
+          "secondary": "#695c54",
+          "on-secondary": "#ffffff",
+          "secondary-container": "#f2dfd5",
+          "on-secondary-container": "#6f625a",
+          "tertiary": "#625d5b",
+          "on-tertiary": "#ffffff",
+          "tertiary-container": "#a59f9c",
+          "on-tertiary-container": "#3a3634",
+          "error": "#ba1a1a",
+          "on-error": "#ffffff",
+          "error-container": "#ffdad6",
+          "on-error-container": "#93000a",
+          "background": "#faf9f6",
+          "on-background": "#1a1c1a",
+          "surface": "#faf9f6",
+          "on-surface": "#1a1c1a",
+          "surface-variant": "#e3e2e0",
+          "on-surface-variant": "#524345",
+          "outline": "#847375",
+          "outline-variant": "#d6c2c4",
+          "surface-container-highest": "#e3e2e0",
+          "surface-container-high": "#e9e8e5",
+          "surface-container": "#efeeeb",
+          "surface-container-low": "#f4f3f1",
+          "surface-container-lowest": "#ffffff"
+        },
+        fontFamily: {
+          "label-lg": ["Plus Jakarta Sans"],
+          "headline-md": ["Playfair Display"],
+          "body-md": ["Plus Jakarta Sans"],
+          "display-lg": ["Playfair Display"]
+        }
+      }
+    }
+  }
+</script>
+</head>
+<body class="bg-surface-container-lowest text-on-background font-body-md antialiased h-screen flex flex-col overflow-hidden">
+  
+  <!-- Password Overlay -->
+  <div id="passwordOverlay" class="fixed inset-0 bg-surface z-[100] flex flex-col items-center justify-center p-4">
+    <div class="bg-surface-container-low p-8 rounded-2xl shadow-xl max-w-sm w-full border border-surface-container-highest text-center">
+      <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4">
+        <span class="material-symbols-outlined text-2xl">lock</span>
+      </div>
+      <h2 class="font-headline-md text-2xl text-on-surface mb-2">Admin Access</h2>
+      <p class="text-sm text-secondary mb-6">Please enter the admin password to continue.</p>
+      <input type="password" id="adminPassword" placeholder="Password" class="w-full p-3 rounded-lg border border-surface-container-highest bg-surface text-sm focus:ring-2 focus:ring-primary mb-4" onkeypress="if(event.key === 'Enter') checkPassword()">
+      <button onclick="checkPassword()" class="w-full bg-primary text-on-primary font-label-lg py-3 rounded-full hover:bg-on-primary-container shadow-md">Unlock Dashboard</button>
+      <p id="passwordError" class="text-error text-xs mt-3 hidden">Incorrect password. Please try again.</p>
+    </div>
+  </div>
+
+  <script>
+    function checkPassword() {
+      const pwd = document.getElementById('adminPassword').value;
+      if (pwd === 'admin123') {
+        document.getElementById('passwordOverlay').classList.add('hidden');
+        fetchBookings();
+      } else {
+        document.getElementById('passwordError').classList.remove('hidden');
+      }
+    }
+  </script>
+
+  <!-- Header -->
+  <header class="bg-surface px-6 py-4 border-b border-surface-container-highest flex items-center justify-between shrink-0">
+    <div class="flex items-center gap-4">
+      <a href="index.html" class="flex items-center gap-2 group">
+        <div class="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+          <span class="material-symbols-outlined">auto_awesome</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display text-xl tracking-tight text-primary leading-none">Bella <span class="italic text-on-surface">Bloom</span></span>
+          <span class="text-[9px] tracking-[0.2em] uppercase font-bold text-secondary mt-0.5">Admin</span>
+        </div>
+      </a>
+      <div class="h-8 w-px bg-surface-container-highest mx-2"></div>
+      <h1 class="text-xl font-headline-md text-on-surface">Dashboard</h1>
+    </div>
+    
+    <div class="flex items-center gap-4">
+      <!-- Filters -->
+      <div class="flex items-center gap-2">
+        <select id="staffFilter" class="rounded-lg border-outline-variant text-sm py-2 bg-surface text-on-surface" onchange="applyFilters()">
+          <option value="all">All Staff</option>
+          <option value="Sophia Carter (Hair Color & Balayage)">Sophia Carter</option>
+          <option value="Emma Williams (Haircuts & Styling)">Emma Williams</option>
+          <option value="Olivia Martinez (Nails & Nail Art)">Olivia Martinez</option>
+          <option value="Mia Anderson (Skincare & Facials)">Mia Anderson</option>
+        </select>
+        <select id="statusFilter" class="rounded-lg border-outline-variant text-sm py-2 bg-surface text-on-surface" onchange="applyFilters()">
+          <option value="all">All Statuses</option>
+          <option value="pending">Pending</option>
+          <option value="confirmed">Confirmed</option>
+          <option value="cancelled">Cancelled</option>
+        </select>
+      </div>
+      
+      <!-- Add Booking Button -->
+      <button onclick="openAddBookingModal()" class="bg-primary text-on-primary font-label-lg px-4 py-2 rounded-full hover:bg-on-primary-container transition-colors flex items-center gap-2 shadow-sm text-sm">
+        <span class="material-symbols-outlined text-[18px]">add</span>
+        Add Booking
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1 overflow-auto p-6 flex flex-col gap-6 bg-surface-container-low">
+    
+    <!-- Pending Approvals -->
+    <section class="bg-surface rounded-2xl border border-surface-container-highest shadow-sm p-6 shrink-0">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-lg font-headline-md text-on-surface flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary">pending_actions</span>
+          Pending Approvals
+        </h2>
+        <span id="pendingCount" class="bg-primary-container text-on-primary-container text-xs font-bold px-2 py-1 rounded-full">0</span>
+      </div>
+      
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm text-on-surface-variant">
+          <thead class="text-xs uppercase bg-surface-container text-secondary">
+            <tr>
+              <th class="px-4 py-3 rounded-tl-lg">Guest</th>
+              <th class="px-4 py-3">Service</th>
+              <th class="px-4 py-3">Artist</th>
+              <th class="px-4 py-3">Date & Time</th>
+              <th class="px-4 py-3 text-right rounded-tr-lg">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="pendingList" class="divide-y divide-surface-container-highest">
+            <!-- Pending items will be injected here -->
+            <tr><td colspan="5" class="px-4 py-4 text-center">Loading pending bookings...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Weekly Calendar -->
+    <section class="bg-surface rounded-2xl border border-surface-container-highest shadow-sm p-6 flex-1 flex flex-col min-h-[500px]">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-lg font-headline-md text-on-surface flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary">calendar_month</span>
+          Weekly Schedule
+        </h2>
+        <div class="flex items-center gap-2 text-sm">
+          <button onclick="changeWeek(-1)" class="p-1 rounded hover:bg-surface-container text-secondary"><span class="material-symbols-outlined">chevron_left</span></button>
+          <span id="currentWeekLabel" class="font-bold text-on-surface">Loading week...</span>
+          <button onclick="changeWeek(1)" class="p-1 rounded hover:bg-surface-container text-secondary"><span class="material-symbols-outlined">chevron_right</span></button>
+        </div>
+      </div>
+      
+      <div class="calendar-grid flex-1 rounded-xl overflow-hidden shadow-inner">
+        <!-- Calendar Headers -->
+        <div class="calendar-header" id="header-0">Sun</div>
+        <div class="calendar-header" id="header-1">Mon</div>
+        <div class="calendar-header" id="header-2">Tue</div>
+        <div class="calendar-header" id="header-3">Wed</div>
+        <div class="calendar-header" id="header-4">Thu</div>
+        <div class="calendar-header" id="header-5">Fri</div>
+        <div class="calendar-header" id="header-6">Sat</div>
+        
+        <!-- Calendar Days -->
+        <div class="calendar-day" id="day-0"></div>
+        <div class="calendar-day" id="day-1"></div>
+        <div class="calendar-day" id="day-2"></div>
+        <div class="calendar-day" id="day-3"></div>
+        <div class="calendar-day" id="day-4"></div>
+        <div class="calendar-day" id="day-5"></div>
+        <div class="calendar-day" id="day-6"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Add Booking Modal -->
+  <div id="addBookingModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-surface rounded-3xl max-w-lg w-full shadow-2xl border border-surface-container flex flex-col max-h-[90vh]">
+      <div class="p-6 border-b border-surface-container-highest flex justify-between items-center shrink-0">
+        <h3 class="font-headline-md text-xl font-bold text-on-surface">Add New Booking</h3>
+        <button onclick="closeAddBookingModal()" class="text-on-surface-variant hover:bg-surface-container p-2 rounded-full">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      
+      <div class="p-6 overflow-y-auto space-y-4">
+        <form id="addBookingForm" class="space-y-4">
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-secondary mb-1">Guest Name *</label>
+              <input type="text" id="addName" required class="w-full p-2.5 rounded-lg border border-surface-container-highest bg-surface text-sm focus:ring-2 focus:ring-primary">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-secondary mb-1">Phone Number</label>
+              <input type="tel" id="addPhone" class="w-full p-2.5 rounded-lg border border-surface-container-highest bg-surface text-sm focus:ring-2 focus:ring-primary">
+            </div>
+          </div>
+          
+          <div>
+            <label class="block text-xs font-semibold text-secondary mb-1">Email Address *</label>
+            <input type="email" id="addEmail" required class="w-full p-2.5 rounded-lg border border-surface-container-highest bg-surface text-sm focus:ring-2 focus:ring-primary">
+          </div>
+          
+          <div>
+            <label class="block text-xs font-semibold text-secondary mb-1">Service *</label>
+            <select id="addService" required class="w-full p-2.5 rounded-lg border border-surface-container-highest bg-surface text-sm focus:ring-2 focus:ring-primary">
+              <option value="Signature HydraFacial">Signature HydraFacial ($199)</option>
+              <option value="Luminous Chemical Peel">Luminous Chemical Peel ($150)</option>
+              <option value="Balayage & Styling">Balayage & Styling ($250)</option>
+              <option value="Precision Haircut & Blowout">Precision Haircut & Blowout ($85)</option>
+            </select>
+          </div>
+          
+          <div>
+            <label class="block text-xs font-semibold text-secondary mb-1">Artist *</label>
+            <select id="addArtist" required class="w-full p-2.5 rounded-lg border border-surface-container-highest bg-surface text-sm focus:ring-2 focus:ring-primary">
+              <option value="Sophia Carter (Hair Color & Balayage)">Sophia Carter</option>
+              <option value="Emma Williams (Haircuts & Styling)">Emma Williams</option>
+              <option value="Olivia Martinez (Nails & Nail Art)">Olivia Martinez</option>
+              <option value="Mia Anderson (Skincare & Facials)">Mia Anderson</option>
+            </select>
+          </div>
+          
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-secondary mb-1">Date *</label>
+              <input type="date" id="addDate" required class="w-full p-2.5 rounded-lg border border-surface-container-highest bg-surface text-sm focus:ring-2 focus:ring-primary">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-secondary mb-1">Time *</label>
+              <select id="addTime" required class="w-full p-2.5 rounded-lg border border-surface-container-highest bg-surface text-sm focus:ring-2 focus:ring-primary">
+                <option value="09:30 AM">09:30 AM</option>
+                <option value="11:00 AM">11:00 AM</option>
+                <option value="01:30 PM">01:30 PM</option>
+                <option value="03:00 PM">03:00 PM</option>
+                <option value="04:30 PM">04:30 PM</option>
+                <option value="06:00 PM">06:00 PM</option>
+              </select>
+            </div>
+          </div>
+          
+          <div>
+            <label class="block text-xs font-semibold text-secondary mb-1">Initial Status</label>
+            <select id="addStatus" class="w-full p-2.5 rounded-lg border border-surface-container-highest bg-surface text-sm focus:ring-2 focus:ring-primary">
+              <option value="confirmed">Confirmed</option>
+              <option value="pending">Pending</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      
+      <div class="p-6 border-t border-surface-container-highest shrink-0 flex justify-end gap-3">
+        <button type="button" onclick="closeAddBookingModal()" class="px-4 py-2 font-label-lg text-sm text-secondary hover:bg-surface-container rounded-full">Cancel</button>
+        <button type="button" onclick="submitNewBooking()" class="bg-primary text-on-primary font-label-lg px-6 py-2 rounded-full hover:bg-on-primary-container shadow-sm text-sm">Save Booking</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // SUPABASE CONFIGURATION - PLACEHOLDERS
+    // TODO: REPLACE WITH YOUR ACTUAL SUPABASE URL AND ANON KEY
+    const supabaseUrl = 'https://tokwzdwpootcgfdiprmq.supabase.co';
+    const supabaseKey = 'sb_publishable_vVPWKwGSvJG4BDVeqpi4yQ_7j8kO2tg';
+    
+    // Fallback mode if Supabase is not configured
+    const useMockData = supabaseUrl === 'YOUR_SUPABASE_URL';
+    let supabaseClient = null;
+    
+    if (!useMockData) {
+      supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+    }
+
+    // State
+    let allBookings = [];
+    let currentWeekStart = new Date();
+    // Adjust to previous Sunday
+    currentWeekStart.setDate(currentWeekStart.getDate() - currentWeekStart.getDay());
+    
+    // Mock Data for demonstration if Supabase is not set up
+    const mockBookings = [
+      { id: '1', customer_name: 'Alice Johnson', service_name: 'Signature HydraFacial', artist_name: 'Sophia Carter (Hair Color & Balayage)', booking_date: '2026-09-02', booking_time: '09:30 AM', status: 'pending' },
+      { id: '2', customer_name: 'Bob Smith', service_name: 'Precision Haircut & Blowout', artist_name: 'Emma Williams (Haircuts & Styling)', booking_date: '2026-09-03', booking_time: '11:00 AM', status: 'confirmed' },
+      { id: '3', customer_name: 'Charlie Davis', service_name: 'Balayage & Styling', artist_name: 'Sophia Carter (Hair Color & Balayage)', booking_date: '2026-09-04', booking_time: '01:30 PM', status: 'cancelled' }
+    ];
+
+    async function fetchBookings() {
+      if (useMockData) {
+        allBookings = [...mockBookings];
+        renderDashboard();
+        return;
+      }
+
+      try {
+        const { data, error } = await supabaseClient
+          .from('bookings')
+          .select('*, artists(name), services(name)')
+          .order('date', { ascending: true })
+          .order('time', { ascending: true });
+
+        if (error) throw error;
+        allBookings = (data || []).map(b => ({
+          id: b.id,
+          customer_name: b.customer_name,
+          service_name: b.services?.name || 'Unknown',
+          artist_name: b.artists?.name || 'Unknown',
+          booking_date: b.date,
+          booking_time: b.time,
+          status: b.status
+        }));
+        renderDashboard();
+      } catch (err) {
+        console.error("Error fetching bookings:", err);
+        alert("Failed to fetch bookings.");
+      }
+    }
+
+    function applyFilters() {
+      renderDashboard();
+    }
+
+    function getFilteredBookings() {
+      const staff = document.getElementById('staffFilter').value;
+      const status = document.getElementById('statusFilter').value;
+      
+      return allBookings.filter(b => {
+        // filter dropdown has "Sophia Carter (Hair Color & Balayage)" so match partial
+        const matchStaff = staff === 'all' || staff.includes(b.artist_name);
+        const matchStatus = status === 'all' || b.status === status;
+        return matchStaff && matchStatus;
+      });
+    }
+
+    function renderDashboard() {
+      const filtered = getFilteredBookings();
+      renderPending(filtered);
+      renderCalendar(filtered);
+    }
+
+    function renderPending(bookings) {
+      const pending = bookings.filter(b => b.status === 'pending');
+      const tbody = document.getElementById('pendingList');
+      document.getElementById('pendingCount').innerText = pending.length;
+      
+      if (pending.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="px-4 py-8 text-center text-secondary">No pending approvals at this time.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = pending.map(b => {
+        return '<tr class="hover:bg-surface-container-low transition-colors">' +
+          '<td class="px-4 py-3 font-medium text-on-surface">' + b.customer_name + '</td>' +
+          '<td class="px-4 py-3">' + b.service_name + '</td>' +
+          '<td class="px-4 py-3">' + b.artist_name.split(' ')[0] + '</td>' +
+          '<td class="px-4 py-3 text-primary">' + b.booking_date + ' <br/><span class="text-xs text-secondary">' + b.booking_time + '</span></td>' +
+          '<td class="px-4 py-3 text-right">' +
+            '<button onclick="updateStatus(\\'' + b.id + '\\', \\'confirmed\\')" class="text-green-700 bg-green-100 hover:bg-green-200 px-2 py-1 rounded text-xs font-bold mr-1">Confirm</button>' +
+            '<button onclick="updateStatus(\\'' + b.id + '\\', \\'cancelled\\')" class="text-red-700 bg-red-100 hover:bg-red-200 px-2 py-1 rounded text-xs font-bold">Cancel</button>' +
+          '</td>' +
+        '</tr>';
+      }).join('');
+    }
+
+    function renderCalendar(bookings) {
+      // 1. Setup headers
+      const weekDates = [];
+      for (let i = 0; i < 7; i++) {
+        const d = new Date(currentWeekStart);
+        d.setDate(d.getDate() + i);
+        weekDates.push(d);
+        
+        const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        document.getElementById('header-' + i).innerHTML = days[i] + '<br><span class="text-xs font-normal text-secondary">' + d.toLocaleDateString(undefined, {month:'short', day:'numeric'}) + '</span>';
+        document.getElementById('day-' + i).innerHTML = ''; // Clear columns
+      }
+
+      // Update Label
+      const endOfWeek = new Date(weekDates[6]);
+      document.getElementById('currentWeekLabel').innerText = weekDates[0].toLocaleDateString(undefined, {month:'short', day:'numeric', year:'numeric'}) + ' - ' + endOfWeek.toLocaleDateString(undefined, {month:'short', day:'numeric', year:'numeric'});
+
+      // 2. Place bookings
+      bookings.forEach(b => {
+        // Find if booking falls in this week
+        const bDate = new Date(b.booking_date + 'T12:00:00'); // hack to avoid tz issues
+        const dayDiff = Math.floor((bDate - currentWeekStart) / (1000 * 60 * 60 * 24));
+        
+        if (dayDiff >= 0 && dayDiff < 7) {
+          const col = document.getElementById('day-' + dayDiff);
+          
+          let statusColor = 'bg-surface-container border-outline-variant text-on-surface-variant';
+          let statusIcon = 'schedule';
+          
+          if (b.status === 'confirmed') {
+            statusColor = 'bg-green-50 border-green-200 text-green-900';
+            statusIcon = 'check_circle';
+          } else if (b.status === 'pending') {
+            statusColor = 'bg-amber-50 border-amber-200 text-amber-900';
+            statusIcon = 'pending';
+          } else if (b.status === 'cancelled') {
+            statusColor = 'bg-red-50 border-red-200 text-red-900 line-through opacity-60';
+            statusIcon = 'cancel';
+          }
+
+          col.innerHTML += '<div class="border rounded p-2 text-xs flex flex-col gap-1 shadow-sm ' + statusColor + '">' +
+              '<div class="font-bold flex justify-between items-center">' +
+                b.booking_time +
+                '<span class="material-symbols-outlined text-[14px]">' + statusIcon + '</span>' +
+              '</div>' +
+              '<div class="font-medium">' + b.customer_name + '</div>' +
+              '<div class="text-[10px] truncate">' + b.service_name + '</div>' +
+              '<div class="text-[10px] font-semibold mt-1 pt-1 border-t border-black/10">' + b.artist_name.split(' ')[0] + '</div>' +
+            '</div>';
+        }
+      });
+    }
+
+    function changeWeek(offset) {
+      currentWeekStart.setDate(currentWeekStart.getDate() + (offset * 7));
+      renderCalendar(getFilteredBookings());
+    }
+
+    async function updateStatus(id, newStatus) {
+      alert("Coming online once secure admin access is added");
+    }
+
+    function openAddBookingModal() {
+      document.getElementById('addDate').value = new Date().toISOString().split('T')[0];
+      document.getElementById('addBookingModal').classList.remove('hidden');
+    }
+
+    function closeAddBookingModal() {
+      document.getElementById('addBookingModal').classList.add('hidden');
+      document.getElementById('addBookingForm').reset();
+    }
+
+    async function submitNewBooking() {
+      const form = document.getElementById('addBookingForm');
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      alert("Coming online once secure admin access is added");
+    }
+
+    // Init (fetchBookings will be called upon password verification)
+  </script>
+</body>
+</html>
