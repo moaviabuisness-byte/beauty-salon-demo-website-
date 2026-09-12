@@ -262,23 +262,23 @@
 <div class="space-y-4">
 <div>
   <label class="block text-xs font-semibold text-secondary mb-1">Full Name *</label>
-  <input type="text" id="custName" value="Ameer Moavia" class="w-full p-3.5 rounded-xl border border-surface-container-highest bg-surface text-sm focus:ring-2 focus:ring-primary">
+  <input type="text" id="custName" placeholder="e.g. Jane Doe" class="w-full p-3.5 rounded-xl border border-surface-container-highest bg-surface text-sm focus:ring-2 focus:ring-primary">
 </div>
 <div>
   <label class="block text-xs font-semibold text-secondary mb-1">Email Address *</label>
-  <input type="email" id="custEmail" value="moaviabuisness@gmail.com" class="w-full p-3.5 rounded-xl border border-surface-container-highest bg-surface text-sm focus:ring-2 focus:ring-primary">
+  <input type="email" id="custEmail" placeholder="e.g. jane@example.com" class="w-full p-3.5 rounded-xl border border-surface-container-highest bg-surface text-sm focus:ring-2 focus:ring-primary">
 </div>
 <div>
   <label class="block text-xs font-semibold text-secondary mb-1">Phone Number *</label>
-  <input type="tel" id="custPhone" value="(512) 555-0184" class="w-full p-3.5 rounded-xl border border-surface-container-highest bg-surface text-sm focus:ring-2 focus:ring-primary">
+  <input type="tel" id="custPhone" placeholder="e.g. (512) 555-0184" class="w-full p-3.5 rounded-xl border border-surface-container-highest bg-surface text-sm focus:ring-2 focus:ring-primary">
 </div>
 
 <!-- Summary Card -->
 <div class="bg-surface-container p-6 rounded-2xl border border-surface-container-high text-xs space-y-2 mt-6">
-  <div class="flex justify-between"><span class="text-secondary">Service:</span> <span class="font-bold text-on-surface" id="sumService">Signature HydraFacial</span></div>
-  <div class="flex justify-between"><span class="text-secondary">Artist:</span> <span class="font-medium" id="sumArtist">Sophia Carter</span></div>
-  <div class="flex justify-between"><span class="text-secondary">Time:</span> <span class="font-medium text-primary" id="sumTime">2026-08-28 @ 09:30 AM</span></div>
-  <div class="flex justify-between text-sm font-bold pt-2 border-t border-surface-container-highest"><span class="text-on-surface">Total:</span> <span class="text-primary font-headline-md" id="sumPrice">$199</span></div>
+  <div class="flex justify-between"><span class="text-secondary">Service:</span> <span class="font-bold text-on-surface" id="sumService">-</span></div>
+  <div class="flex justify-between"><span class="text-secondary">Artist:</span> <span class="font-medium" id="sumArtist">-</span></div>
+  <div class="flex justify-between"><span class="text-secondary">Time:</span> <span class="font-medium text-primary" id="sumTime">-</span></div>
+  <div class="flex justify-between text-sm font-bold pt-2 border-t border-surface-container-highest"><span class="text-on-surface">Total:</span> <span class="text-primary font-headline-md" id="sumPrice">-</span></div>
 </div>
 
 <button onclick="submitBooking()" id="confirmBtn" class="w-full mt-6 bg-primary text-on-primary font-label-lg py-4 rounded-full hover:bg-on-primary-container shadow-md flex justify-center items-center gap-2">
@@ -305,7 +305,7 @@
     <span class="material-symbols-outlined text-3xl">verified</span>
   </div>
   <h3 class="font-display-lg text-2xl font-bold text-on-surface mb-2">Request Sent!</h3>
-  <p class="text-xs text-on-surface-variant mb-6">Your booking request has been sent! You'll receive a confirmation on WhatsApp/email once the salon approves it. Details sent to <strong id="recEmail" class="text-primary">moaviabuisness@gmail.com</strong>.</p>
+  <p class="text-xs text-on-surface-variant mb-6">Your booking request has been sent! You'll receive a confirmation on WhatsApp/email once the salon approves it. Details sent to <strong id="recEmail" class="text-primary"></strong>.</p>
   <a href="index.html" class="block w-full py-3.5 bg-primary text-on-primary rounded-full font-label-lg text-sm">Return to Sanctuary Home</a>
 </div>
 </div>
